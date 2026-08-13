@@ -27,7 +27,7 @@ if [ -n "$NCDU_WEB_VIEWER_EXTRA_ARGS" ]; then
             echo "NCDU_WEB_VIEWER_EXTRA_ARGS: unmatched single quote" >&2
             exit 1
             ;;
-        *[!A-Za-z0-9_./=*?+\[\]\ -]*)
+        *[!A-Za-z0-9_./=*+?\ -]*)
             echo "NCDU_WEB_VIEWER_EXTRA_ARGS: unsupported characters outside single quotes" >&2
             exit 1
             ;;
