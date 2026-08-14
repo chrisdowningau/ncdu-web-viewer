@@ -10,6 +10,23 @@ This tool could be used internaly at [Abes](https://abes.fr) for analyze and cle
 
 ![image](https://github.com/kerphi/ncdu-web-viewer/assets/328244/84be8aaf-1f8e-4231-a458-1a70d6d84046)
 
+## Changes in this fork
+
+Fork of [abes-esr/ncdu-web-viewer](https://github.com/abes-esr/ncdu-web-viewer). Upstream docs below are left as-is; this section covers what differs here.
+
+- **`NCDU_WEB_VIEWER_EXTRA_ARGS`**: pass extra ncdu flags (e.g. `--exclude`). Paths with spaces need single quotes: `--exclude '/path/with spaces'`. Double quotes and shell metacharacters outside single quotes are rejected.
+- **Publish to GHCR** (not DockerHub): on push to `main`, builds `ghcr.io/chrisdowningau/ncdu-web-viewer:latest` and `ghcr.io/chrisdowningau/ncdu-web-viewer:sha-<short>`.
+- Removed the upstream DockerHub publish and create-release workflows.
+
+Example with excludes:
+
+```bash
+docker run --rm \
+  -e NCDU_WEB_VIEWER_SCAN_FROM=folder \
+  -e NCDU_WEB_VIEWER_EXTRA_ARGS="--exclude node_modules --exclude '.git'" \
+  -v /applis/:/folder-to-scan/ \
+  -p 3000:3000 ghcr.io/chrisdowningau/ncdu-web-viewer:latest
+```
 
 ## Prerequisites
 
